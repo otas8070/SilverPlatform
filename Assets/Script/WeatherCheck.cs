@@ -2,16 +2,20 @@
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using LitJson;
 
 
 public class WeatherCheck : MonoBehaviour {
 
 	private GameObject WeatherImage;
+	private GameObject WeatherText;
 
 	// Use this for initialization
 	void Start () {
 		StartCoroutine(Get("http://api.openweathermap.org/data/2.5/weather?q=Tokyo,jp"));
+		WeatherImage = GameObject.Find ("WeatherImage");
+		WeatherText = GameObject.Find ("WeatherText");
 	}
 	
 	// Update is called once per frame
@@ -32,20 +36,21 @@ public class WeatherCheck : MonoBehaviour {
 		if (www.error == null) {
 			Debug.Log("Get Success");
 
-			Debug.Log (www.text);
+			// 本来はサーバからのレスポンスとしてjsonを戻し、www.textを使用する
+			JSONObject json = new JSONObject (www.text);
+			float temp = json.GetField ("main").GetField("temp").n;
+			string temp2 = temp + "℃";
 
-			WeatherImage = GameObject.Find("WeatherImage");
+			//天気の画像URLを取得して出す
+			string weather = "http://openweathermap.org/img/w/"+json.GetField ("weather") [0].GetField ("icon").str+".png";
+			WWW Weatherwww = new WWW (weather);
+			yield return Weatherwww;
+			Texture2D texture = Weatherwww.texture;
+			WeatherImage.GetComponent<Image> ().sprite = Sprite.Create (texture,new Rect(0,0,50,50), Vector2.zero);
 
-			// 本来はサーバからのレスポンスとしてjsonを戻し、www.textを使用するが
-			// 今回は便宜上、下記のjsonを使用する
-			string txt = "{\"name\": \"okude\", \"level\": 99, \"friend_names\": [\"ichiro\", \"jiro\", \"saburo\"]}";
-			// 自作したTestResponseクラスにレスポンスを格納する
-			TestResponse response = JsonMapper.ToObject<TestResponse> (txt);
-			Debug.Log("name: " + response.name);
-			Debug.Log("level: " + response.level);
-			Debug.Log("friend_names[0]: " + response.friend_names[0]);
-			Debug.Log("friend_names[1]: " + response.friend_names[1]);
-			Debug.Log("friend_names[2]: " + response.friend_names[2]);
+			//天気の温度を出す
+			WeatherText.GetComponent<Text> ().text = temp2;
+			
 		}
 		// 失敗
 		else{
@@ -55,9 +60,4 @@ public class WeatherCheck : MonoBehaviour {
 
 
 }
-
-class TestResponse {
-	public string name;
-	public int level;
-	public List<string> friend_names;
-}
+	
