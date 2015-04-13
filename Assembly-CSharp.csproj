@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{7AE97B8D-94D0-5D72-C347-1A76C4F220E0}</ProjectGuid>
+	<ProjectGuid>{008AFD55-82E3-4F96-C20F-46A254CD6025}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -50,13 +50,14 @@
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Script\CameraGizmoDrawer.cs" />
+     <Compile Include="Assets\Script\PazzleController.cs" />
      <Compile Include="Assets\Script\WeatherCheck.cs" />
      <None Include="Assets\JSON\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>/Users/shoya/Unity/Pazzle/Assets/Plugins/LitJson.dll</HintPath>
+ <HintPath>/Users/shoya/Unity/SilverPlatform/Assets/Plugins/LitJson.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
