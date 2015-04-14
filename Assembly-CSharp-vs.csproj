@@ -50,6 +50,7 @@
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Script\CameraGizmoDrawer.cs" />
+     <Compile Include="Assets\Script\PazzleController.cs" />
      <Compile Include="Assets\Script\WeatherCheck.cs" />
      <None Include="Assets\JSON\readme.txt" />
  <Reference Include="UnityEngine.UI">

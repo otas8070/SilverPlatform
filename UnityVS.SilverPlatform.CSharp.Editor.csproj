@@ -5,17 +5,17 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7AB1B608-F0C5-FB8A-8AC7-6A84E811DC4D}</ProjectGuid>
+    <ProjectGuid>{C9EE91C4-9E61-01F6-AE4F-861167143AAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace></RootNamespace>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneOSXIntel:4</UnityBuildTarget>
     <UnityVersion>4.6.3f1</UnityVersion>
   </PropertyGroup>
@@ -52,17 +52,33 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
     <Reference Include="LitJson">
       <HintPath>Assets\Plugins\LitJson.dll</HintPath>
     </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
+      <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityVS.VersionSpecific">
+      <HintPath>Assets\UnityVS\Editor\UnityVS.VersionSpecific.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\JSON\JSONObject.cs" />
-    <Compile Include="Assets\JSON\JSONTemplates.cs" />
-    <Compile Include="Assets\JSON\VectorTemplates.cs" />
-    <Compile Include="Assets\Script\CameraGizmoDrawer.cs" />
-    <Compile Include="Assets\Script\PazzleController.cs" />
-    <Compile Include="Assets\Script\WeatherCheck.cs" />
+    <ProjectReference Include="UnityVS.SilverPlatform.CSharp.csproj">
+      <Project>{129C79B9-77DE-55E3-3852-C68460846C29}</Project>
+      <Name>UnityVS.SilverPlatform.CSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\JSON\Editor\JSONChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JSON\readme.txt" />
